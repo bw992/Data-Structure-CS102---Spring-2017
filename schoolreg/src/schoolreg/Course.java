@@ -1,5 +1,7 @@
 package schoolreg;
 
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Course {
@@ -81,6 +83,7 @@ public class Course {
 		return List_Of_Names;
 	}
 	
+	//get course info
 	public static Course get_Course(String id){
 		for(int i =0;i<All_course.size();i++){
 			if (id.equals(All_course.get(i))){
@@ -90,6 +93,19 @@ public class Course {
 		return null;
 	}
 	
+	//Admin find the names of student in one class
+	public static ArrayList<Course> find_studentnames_inclass(String id){
+		ArrayList<Course> list_names = new ArrayList<Course>();
+		for (int i =0;i<All_course.size();i++){
+			if (id.equals(All_course.get(i))){
+				Course temp = All_course.get(i);
+				list_names.add(temp);
+				
+			}
+		}
+		return list_names;
+	}
+	//Admin add a student in class
 	public static void add_student(String id, String student_name){
 		for (int i =0;i<All_course.size();i++){
 			if (id.equals(All_course.get(i))&All_course.get(i).Maximum_Students>All_course.get(i).Current_Students){
@@ -99,15 +115,63 @@ public class Course {
 			}
 		}
 	}
-	public static void add_student_studentside(String id,String course_name, String student_name){
+	
+	// Student register in a class
+	public static void add_student_studentside(String course_name,int section_number,String student_name){
 		for (int i =0;i<All_course.size();i++){
-			if (id.equals(All_course.get(i)) &  course_name.equals(All_course.get(i))&All_course.get(i).Maximum_Students>All_course.get(i).Current_Students){
+			if (course_name.equals(All_course.get(i)) &  course_name.equals(All_course.get(i))&All_course.get(i).Maximum_Students>All_course.get(i).Current_Students){
 				Course tmp = All_course.get(i);
 				tmp.List_Of_Names.add(student_name);
 				
 			}
 		}
 	}
+	//Student withdraws from one class
+	public static void withdraw_student(String course_name, String full_name){
+		for (int i =0;i<All_course.size();i++){
+			if (course_name.equals(All_course.get(i))){
+				Course tmp = All_course.get(i);
+				tmp.List_Of_Names.remove(full_name);
+			}
+	}
+		}
+	
+	//Find a student's course list 
+	public static String find_student_all_class(String full_name){
+		String personal_course = "";
+		for (int i=0; i<All_course.size();i++){
+			if (All_course.get(i).List_Of_Names.contains(full_name)!= true){
+				return null;
+			}
+			else {
+				String x =All_course.get(i).Course_Name; 
+				personal_course+=x;
+				
+			}
+		}
+		return personal_course;
+		
+	}
+	
+	//Sort course based on current student number 
+	
+	public static ArrayList<Course> sort_list(){
+		ArrayList<Course> full_course = new ArrayList<Course>();
+		for(int x =0; x<All_course.size();x++){
+			int tempValue = All_course.get(x).Current_Students;
+	        int tempIndex = x;
+	        for(int y = 0; y < All_course.size(); y++)
+	        {
+			       
+			            if(tempValue < All_course.get(y).Current_Students)
+			            {
+			                full_course.get(x).Current_Students = tempValue;
+			            }
+			        }
+			    }
+
+			    return full_course;
+			}		
 	
 	
 	public Course get_course_name_info(String name){

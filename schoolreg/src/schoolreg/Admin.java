@@ -1,6 +1,9 @@
 package schoolreg;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Admin extends user {
 	ArrayList<Course> admin_course = new ArrayList<Course>();
@@ -16,6 +19,8 @@ public class Admin extends user {
 			  course.set_Course_current_students(new_course_current_student);}
 		 
 	 }
+	 
+	 //1
 	 public void add_new_course(String Course_Name,String Course_id,int Maximum_Students
 				,int Current_Students, ArrayList<String> List_Of_Names,String Course_Instructor, int Course_Section_Number, String Course_Location){
 		 
@@ -26,7 +31,7 @@ public class Admin extends user {
 		 
 	 }
 	
-	 // Delete a course by using course id 
+	 //2. Delete a course by using course id 
 	 public void Delete_a_course(String delete_course_name){
 		if (Course.get_Course(delete_course_name) != null){
 			admin_course.remove(delete_course_name);
@@ -69,15 +74,35 @@ public class Admin extends user {
 			System.out.println(Course.check_if_class_full());
 		}
 		
+		//3 Write a file the list of course that are full
+		public void write_file_of_list() throws IOException{
+			FileWriter writer = new FileWriter("output.txt"); 
+			String str = Course.check_if_class_full().toString();
+			writer.write(str);
+			writer.close();
+			}
+			
 		
-			 
+		//4 view the names of the students that being registered in a specific  class
+		public void view_names_in_class(String id){
+			
+			 System.out.println(Course.find_studentnames_inclass(id));
+		}
+	
+			
+		//5 view the list of student class 
+		public void student_class(String first_name,String last_name){
+			String full_name = first_name+last_name;
+			System.out.println(Course.find_student_all_class(full_name));
+		}
+		//6 Sort courses based on current number of student 
+		public void sort_courses(){
+			Course.sort_list();
+			System.out.println(Course.sort_list());
+		}
 	
 	 
 	
-	//public void CreateCourse(cl){
-		//#arraylist<course>cl
-		//course temp = new course ();
-	//	cl.add(temp);
 		
 	}
 
