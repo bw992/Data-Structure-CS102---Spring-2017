@@ -8,10 +8,14 @@ import java.io.Serializable;
 
 
 public class Database implements java.io.Serializable{
-	public static ArrayList<Course> All_course = new ArrayList<>();
-	public static ArrayList<Student> student_list= new ArrayList<>();
+	public static ArrayList<Course> All_course = Course.get_all_course();
+	public static ArrayList<Student> student_list= new ArrayList<Student>();
+	public static String message = "message";
 	
 	public Admin admin = new Admin("Admin","Admin001","first_name","last_name");
+	
+	
+	
 	
 	public Database(){
 		
@@ -19,12 +23,14 @@ public class Database implements java.io.Serializable{
 	
 	public ArrayList<Course> getCourses_list(){
 		return All_course;
+		
 	}
 	public ArrayList<Student> getStudent_list(){
 		return student_list;
 	}
 	
 	public void display(){
+		//System.out.println(All_course.get(1).get_Course_Name());
 		Scanner input = new Scanner (System.in);
 		int Choice;
 		System.out.println("Choose the option below");
@@ -32,7 +38,7 @@ public class Database implements java.io.Serializable{
 		Choice = input.nextInt();
 		input.nextLine();
 		switch (Choice){
-		case 3: System.exit(0);
+		case 3:break;
 		case 1: 
 			System.out.println("Enter Admin Menu");
 			String username = input.nextLine(); 
@@ -47,7 +53,7 @@ public class Database implements java.io.Serializable{
 				display();
 			}
 			
-			
+			break;
 				
 	    case 2: 
 	    	
@@ -92,7 +98,7 @@ public class Database implements java.io.Serializable{
 		Choice = input.nextInt();
 		input.nextLine();
 		switch (Choice){
-		case 6: System.exit(0);
+		case 6: break;
 		case 1: 
 				st1.view_all_class();
 				Stu_display(st1);
@@ -169,7 +175,7 @@ public class Database implements java.io.Serializable{
 		input.nextLine();
 		System.out.println("you are in the admind menu");
 		switch (Choice){
-		case 6: System.exit(0);
+		case 6: break;
 		case 1: 
 			System.out.println("Enter course name");
 			String cos = input.nextLine(); 
@@ -204,7 +210,12 @@ public class Database implements java.io.Serializable{
 			admin_display();
 			break;
 		case 3: 
-			admin.Edit_course();
+			System.out.println("Enter course ID");
+			String cos3 = input.nextLine(); 
+			System.out.println("Enter section number"); 
+			int sec_num4= input.nextInt(); 
+			input.nextLine();
+			admin.Edit_course(cos3,sec_num4);
 			admin_display();
 			break;
 		case 4: 
@@ -221,7 +232,10 @@ public class Database implements java.io.Serializable{
 			String cos2 = input.nextLine(); 
 			System.out.println("Enter student's full name");
 			String name1 = input.nextLine(); 
-			admin.add_student(name1,cos2);
+			System.out.println("Enter section number"); 
+			int sec_num3= input.nextInt(); 
+			input.nextLine();
+			admin.add_student(name1,cos2,sec_num3);
 			admin_display();
 			break;
 		case 7: 
@@ -249,11 +263,10 @@ public class Database implements java.io.Serializable{
 			admin_display();
 			break;
 		case 11:
-			System.out.println("Enter first name ");
+			System.out.println("Enter full name ");
 			String fn = input.nextLine(); 
-			System.out.println("Enter first name ");
-			String ln = input.nextLine();
-			admin.student_class(fn,ln);
+			
+			admin.student_class(fn);
 			admin_display();
 			break;	
 		case 12: 
