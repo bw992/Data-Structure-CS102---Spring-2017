@@ -214,7 +214,7 @@ public class program {
 		    						gap1 = Math.abs(result[temp1]-result[i]) ;}
 		    				double gap2=0;
 		    				if(temp2<result.length)
-		    					{Math.abs(result[temp2]-result[i]); }
+		    					{gap2 = Math.abs(result[temp2]-result[i]); }
 		    				//System.out.println("The previous index is "+ temp1+"The after index is "+ temp2 );
 		    				//System.out.println("The previous gap is " + gap1 + "the second gap is "+gap2);
 		    				
@@ -324,7 +324,7 @@ public class program {
 		    						gap1 = Math.abs(result[temp1]-result[i]) ;}
 		    				double gap2=0;
 		    				if(temp2<result.length)
-		    					{Math.abs(result[temp2]-result[i]); }
+		    					{gap2 = Math.abs(result[temp2]-result[i]); }
 		    				//System.out.println("The previous index is "+ temp1+"The after index is "+ temp2 );
 		    				//System.out.println("The previous gap is " + gap1 + "the second gap is "+gap2);
 		    				
@@ -430,7 +430,7 @@ public class program {
 		    						gap1 = Math.abs(result[temp1]-result[i]) ;}
 		    				double gap2=0;
 		    				if(temp2<result.length)
-		    					{Math.abs(result[temp2]-result[i]); }
+		    					{gap2 =Math.abs(result[temp2]-result[i]); }
 		    				//System.out.println("The previous index is "+ temp1+"The after index is "+ temp2 );
 		    				//System.out.println("The previous gap is " + gap1 + "the second gap is "+gap2);
 		    				
@@ -540,7 +540,7 @@ public class program {
 		    						gap1 = Math.abs(result[temp1]-result[i]) ;}
 		    				double gap2=0;
 		    				if(temp2<result.length)
-		    					{Math.abs(result[temp2]-result[i]); }
+		    					{gap2 = Math.abs(result[temp2]-result[i]); }
 		    				//System.out.println("The previous index is "+ temp1+"The after index is "+ temp2 );
 		    				//System.out.println("The previous gap is " + gap1 + "the second gap is "+gap2);
 		    				
